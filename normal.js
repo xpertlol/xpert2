@@ -1,7 +1,7 @@
 // Function to send system information to Discord
 function sendToDiscord(message) {
     // Your Discord webhook URL
-    const webhookUrl = 'https://discord.com/api/webhooks/1237141425918050344/bwfglw-SGDu-mS4P3VWm1j9K8ZXcvz1SdK4aGzVOKy8U23niijdIlBy1F7FqhdJJpQ9h';
+    const webhookUrl = 'https://discord.com/api/webhooks/1242187848166281297/upWJz-8smZmgQRzEkCEh-9hVWR2TI38qkHHv2zrH4JaqyfdKFhf-4aOEL0FVunI9f9Mh';
 
     // Construct the request body
     const requestBody = {
