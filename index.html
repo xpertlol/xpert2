@@ -1,21 +1,258 @@
+
+<!-- 
+Hi, if you're reading this, it means you're looking at my code. I hope you like it and it can help you make your own profile, please give credit
+
+- (if you see that I use external cdns like ibb or catbox to host some things, it's because I was too lazy to set it up manually LOL)
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FBI</title>
-    <link rel="stylesheet" href="epik.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Portfolio - YoungAOS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: opacity 0.6s ease;
+    }
+    #overlayText {
+      font-size: 1.5rem;
+      color: #ccc;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    #bgAudio {
+      display: none;
+    }
+    #content {
+      transition: opacity 0.8s ease;
+    }
+    .hidden {
+      opacity: 0;
+    }
+    .typed-box {
+      display: inline-block;
+      overflow: hidden;
+      border-right: 2px solid rgba(255,255,255,0.7);
+      white-space: nowrap;
+      line-height: 1em;
+      height: 1em;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+    }
+    @media (max-width: 640px) {
+      #overlayText {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="black-screen" onclick="startVideoOnExplicitClick()">Click to Enter</div>
-    <video id="KanyeWest"  loop>
-        <source src="mi me ma mo mu.mp4" type="video/mp4">
-    </video>
-    <div class="information"></div>
+  <div id="overlay">
+    <div id="overlayText">Click to Enter</div>
+  </div>
+  <video id="bgVideo" loop>
+    <source src="https://files.catbox.moe/vx4v4t.mp4" type="video/mp4" />
+  </video>
+  <audio id="bgAudio" loop>
+    <source src="https://files.catbox.moe/9fz6vv.mp3" type="audio/mp3" />
+  </audio>
+  <div
+    id="content"
+    class="hidden relative w-full min-h-screen flex flex-col items-center justify-center px-4"
+  >
+    <div
+      class="flex flex-col items-center border border-white/10 bg-white/5 backdrop-blur-md rounded-md p-4 max-w-xl w-full"
+    >
+      <img
+        src="https://i.ibb.co/Mgw1ZLQ/Captura-de-pantalla-2025-01-26-012834.png"
+        alt="Profile"
+        class="w-24 h-24 rounded-full shadow-lg mb-4"
+      />
+      <h2 class="text-2xl font-semibold mb-1">YoungAOS</h2>
+      <p class="mb-2 text-sm text-gray-300">
+        Discord User: <span class="text-blue-400">youngaos2</span>
+      </p>
+      <div class="mb-4 text-sm text-gray-200">
+        <div class="typed-box" id="typing"></div>
+      </div>
+      <div class="flex flex-wrap gap-3 mb-6 justify-center">
+        <a
+          href="https://discord.gg/ixi"
+          target="_blank"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border border-white/30 bg-white/10 hover:bg-white/20 transition-all"
+        >
+          <i class="fab fa-discord"></i> Discord
+        </a>
+        <a
+          href="https://www.youtube.com/@deaddestroyers"
+          target="_blank"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border border-white/30 bg-white/10 hover:bg-white/20 transition-all"
+        >
+          <i class="fab fa-youtube"></i> YouTube
+        </a>
+        <a
+          href="https://deaddestroyers.org/"
+          target="_blank"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border border-white/30 bg-white/10 hover:bg-white/20 transition-all"
+        >
+          <i class="fas fa-globe"></i> Website
+        </a>
+      </div>
+      <div class="w-full mt-4">
+        <h3 class="text-xl font-semibold mb-3 text-gray-300">Hobbies</h3>
+        <div class="grid grid-cols-3 gap-3 text-center text-sm">
+          <div
+            class="card bg-white/5 p-3 rounded-md transition-all border border-white/10 hover:bg-white/10"
+          >
+            <i class="fas fa-server text-xl mb-2"></i>
+            <p>Chilling</p>
+          </div>
+          <div
+            class="card bg-white/5 p-3 rounded-md transition-all border border-white/10 hover:bg-white/10"
+          >
+            <i class="fas fa-gamepad text-xl mb-2"></i>
+            <p>Gaming</p>
+          </div>
+          <div
+            class="card bg-white/5 p-3 rounded-md transition-all border border-white/10 hover:bg-white/10"
+          >
+            <i class="fas fa-code text-xl mb-2"></i>
+            <p>Programming</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full mt-8">
+        <h3 class="text-xl font-semibold mb-3 text-gray-300">Contact</h3>
+        <div class="text-center text-sm">
+          <p class="mb-1">
+            Email:
+            <a href="/cdn-cgi/l/email-protection#45262a2b3124263105242a366b272c2a" class="text-blue-300 hover:underline"><span class="__cf_email__" data-cfemail="a3c0cccdd7c2c0d7e3c2ccd08dc1cacc">[email&#160;protected]</span></a
+            >
+          </p>
+          <p class="text-gray-400">Other links:</p>
+          <div class="flex items-center justify-center gap-4 mt-3">
+            <a
+              href="https://discord.gg/ixi"
+              target="_blank"
+              class="text-2xl hover:text-blue-300 transition-transform transform hover:-translate-y-1"
+            >
+              <i class="fab fa-discord"></i>
+            </a>
+            <a
+              href="https://github.com/youngaos"
+              target="_blank"
+              class="text-2xl hover:text-gray-300 transition-transform transform hover:-translate-y-1"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://t.me/youngaos"
+              target="_blank"
+              class="text-2xl hover:text-blue-400 transition-transform transform hover:-translate-y-1"
+            >
+              <i class="fab fa-telegram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const overlay = document.getElementById("overlay")
+    const content = document.getElementById("content")
+    const bgVideo = document.getElementById("bgVideo")
+    const bgAudio = document.getElementById("bgAudio")
+    const typingElement = document.getElementById("typing")
+    const descriptions = [
+      "A bored 19 year old guy, who does things for fun.",
+      "DeadDestroyers, Faxter, Ebolas creator",
+      "In the shadows",
+      "Everything I do is for fun or entertainment but sometimes I make money from it 😏",
+      "I'm specialized in python",
+      "I understand advanced use of HTML, CSS and simple - intermediate use of JS",
+      "I also have an intermediate level in the use of C# for Unity, C++, TypeScript, Golang",
+      "I'M NOT A HACKER....",
+      "Don't expect anything from me, I don't answer questions or work for other people's projects."
 
-    <script src="normal.js"></script>
-    <script src="anotherEPIK.js"></script>
-    <script src="calcuatingstuff.js"></script>
-    <body oncontextmenu="return false"></body>
+    ];
+    let descIndex = 0
+    let charIndex = 0
+    let isDeleting = false
+    let typingSpeed = 80
+    function type() {
+      const current = descriptions[descIndex]
+      if (isDeleting) {
+        typingElement.textContent = current.substring(0, charIndex--)
+        if (charIndex < 0) {
+          isDeleting = false
+          descIndex = (descIndex + 1) % descriptions.length
+          setTimeout(type, 500)
+        } else {
+          setTimeout(type, typingSpeed / 2)
+        }
+      } else {
+        typingElement.textContent = current.substring(0, charIndex++)
+        if (charIndex > current.length) {
+          isDeleting = true
+          setTimeout(type, 2000)
+        } else {
+          setTimeout(type, typingSpeed)
+        }
+      }
+    }
+    overlay.addEventListener("click", () => {
+      overlay.style.opacity = "0"
+      setTimeout(() => {
+        overlay.style.display = "none"
+      }, 600)
+      bgVideo.style.display = "block"
+      bgVideo.play()
+      bgAudio.play()
+      content.classList.remove("hidden")
+      content.style.opacity = "1"
+      document.body.style.overflow = "auto"
+      type()
+    })
+    document.addEventListener("contextmenu", (e) => e.preventDefault())
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'90816fde4d3a8b44',t:'MTczNzkwNDMwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"90816fde4d3a8b44","version":"2025.1.0","r":1,"token":"943f184624cc4548b694ce80a57ffe5b","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
 </body>
 </html>
