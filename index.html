@@ -1072,31 +1072,49 @@
     
     // Methods data
     const methods = [
-      { id: 1, name: 'HOMEHOLD', isAddon: true, maxTime: '172.800', vip: false, active: true },
-      { id: 2, name: 'SYNFLOOD', isAddon: false, maxTime: '600', vip: true, active: true },
-      { id: 3, name: 'DISCORD', isAddon: false, maxTime: '600', vip: true, active: true },
-      { id: 4, name: 'TELEGRAM', isAddon: false, maxTime: '600', vip: true, active: true },
-      { id: 5, name: 'OPENVPN', isAddon: false, maxTime: '600', vip: true, active: true },
-      { id: 6, name: 'TCPKILL', isAddon: false, maxTime: '600', vip: true, active: true },
-      { id: 7, name: 'TCPMIX', isAddon: false, maxTime: '600', vip: true, active: true },
-      { id: 8, name: 'UDPSTORM', isAddon: false, maxTime: '600', vip: true, active: true },
-      { id: 8, name: 'WSD', isAddon: false, maxTime: '600', vip: true, active: true },
-      { id: 9, name: 'OVH', isAddon: false, maxTime: '600', vip: true, active: true },
-      { id: 10, name: 'SSH', isAddon: false, maxTime: '600', vip: false, active: true },
-      { id: 11, name: 'TCPBOOM', isAddon: false, maxTime: '600', vip: false, active: true },
-      { id: 12, name: 'UDPBYPASS', isAddon: false, maxTime: '600', vip: false, active: true },
-      { id: 13, name: 'RAKNET', isAddon: false, maxTime: '600', vip: false, active: true },
-      { id: 14, name: 'STUN', isAddon: false, maxTime: '600', vip: false, active: true },
-      { id: 15, name: 'MIXAMP', isAddon: false, maxTime: '600', vip: false, active: true },
-      { id: 16, name: 'HOMEKILL', isAddon: false, maxTime: '600', vip: false, active: true },
-      { id: 17, name: 'DNS', isAddon: false, maxTime: '600', vip: false, active: true },
-      { id: 18, name: 'GAME', isAddon: false, maxTime: '600', vip: false, active: true },
-      { id: 19, name: 'FIVEM', isAddon: false, maxTime: '600', vip: false, active: true },
-      { id: 20, name: 'TLS', isAddon: false, maxTime: '2000', vip: false, active: true },
-      { id: 21, name: 'HTTPS-CN', isAddon: false, maxTime: '2000', vip: false, active: true },
-      { id: 22, name: 'BROWSER', isAddon: false, maxTime: '2000', vip: true, active: true },
-      { id: 23, name: 'CFBYPASS', isAddon: false, maxTime: '600', vip: true, active: true },
-    ];
+  { id: 1, name: 'TLS', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 2, name: 'CLOUDFLARE', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 3, name: 'HTTP', isAddon: false, maxTime: '600', vip: false, active: true },
+  { id: 4, name: 'HTTPS', isAddon: false, maxTime: '600', vip: false, active: true },
+  { id: 5, name: 'BROWSER', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 6, name: 'GUDP', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 7, name: 'UDP', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 8, name: 'UDP-OUT', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 9, name: 'SUBNET', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 10, name: 'UDP-BYPASSV2', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 11, name: 'GAME', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 12, name: 'TCP-BOOM', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 13, name: 'TCP-DROP', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 14, name: 'TCP-OUT', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 15, name: 'SSH', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 16, name: 'HOME', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 17, name: 'HOLD', isAddon: true, maxTime: '86400', vip: false, active: true },
+  { id: 18, name: 'DNS', isAddon: false, maxTime: '600', vip: false, active: true },
+  { id: 19, name: 'OVH', isAddon: false, maxTime: '600', vip: true, active: true },
+  { id: 20, name: 'FORTNITE', isAddon: false, maxTime: '2000', vip: false, active: true },
+  { id: 21, name: 'CODKILL', isAddon: false, maxTime: '2000', vip: false, active: true },
+  { id: 22, name: 'CFBYPASS', isAddon: false, maxTime: '600', vip: true, active: true },
+  
+  // Star Methods (Addon)
+  { id: 23, name: 'HTTP-STAR', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 24, name: 'UDP-STAR', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 25, name: 'TCP-STAR', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 26, name: 'DNS-STAR', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 27, name: 'SYN-STAR', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 28, name: 'OVH-STAR', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 29, name: 'GAME-STAR', isAddon: true, maxTime: '600', vip: true, active: true },
+
+  // Great Methods (Addon)
+  { id: 30, name: 'HTTP-GREAT', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 31, name: 'CF-GREAT', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 32, name: 'UDP-GREAT', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 33, name: 'TCP-GREAT', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 34, name: 'DNS-GREAT', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 35, name: 'SYN-GREAT', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 36, name: 'OVH-GREAT', isAddon: true, maxTime: '600', vip: true, active: true },
+  { id: 37, name: 'GAME-GREAT', isAddon: true, maxTime: '600', vip: true, active: true }
+];
+
     
 // Generate method cards
 const methodsGrid = document.getElementById('methods-grid');
