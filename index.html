@@ -1,876 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Primary Meta Tags -->
-    <title>xpert</title>
-    <meta name="title" content="xpert" />
-    <meta name="description" content="Create feature-rich, customizable and modern link-in-bio pages with Motion Goats baby " />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="" />
-    <meta property="og:title" content="xpert" />
-    <meta property="og:description" content="Create feature-rich, customizable and modern link-in-bio pages with Motion Goats baby " />
-    <meta property="og:image" content="" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="" />
-    <meta property="twitter:title" content="xpert" />
-    <meta property="twitter:description" content="Create feature-rich, customizable and modern link-in-bio pages with Motion Goats baby " />
-    <meta property="twitter:image" content="" />
-
-    <!-- Meta Tags Generated with https://metatags.io -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
-    <style>
-        @font-face {
-            font-family: 'Angel_wish';
-            src: url('Angel_wish.ttf') format('truetype');
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Roboto, Arial, sans-serif;
-            cursor: url('Cursor.gif'), auto;
-            user-select: none;
-        }
-
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-            background-color: #000;
-        }
-
-        .background-gif {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 3rem;
-            text-align: center;
-            z-index: 10;
-            transition: opacity 0.5s ease;
-            backdrop-filter: blur(10px);
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .content {
-            position: relative;
-            z-index: 5;
-            text-align: center;
-            color: white;
-            max-width: 400px;
-            width: 100%;
-            display: none;
-        }
-
-        .profile-wrapper {
-            max-width: 400px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            transform-style: preserve-3d;
-            transform: perspective(1000px) rotateX(var(--xv)) rotateY(var(--yv));
-            transition: transform 0.1s ease-out;
-            will-change: transform;
-            z-index: 6;
-            position: relative;
-            margin: auto;
-        }
-
-        :root {
-            --xv: 0deg;
-            --yv: 0deg;
-        }
-
-        .profile-container {
-            text-align: center;
-            color: white;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            max-width: 400px;
-            width: 100%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            min-height: 400px;
-            transition: min-height 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transform: none;
-            position: relative;
-        }
-
-        .playlist-container {
-            text-align: left;
-            color: white;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            max-width: 400px;
-            width: 100%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transform: none;
-            position: relative;
-        }
-
-        .avatar-container {
-            position: relative;
-            display: inline-block;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .avatar {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .username {
-            font-family: 'Angel_wish', Arial, sans-serif;
-            font-size: 2.5rem;
-            margin-top: 20px;
-            text-transform: capitalize;
-            font-weight: 600;
-            position: relative;
-            display: block;
-        }
-
-        .uid {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 5px;
-            border-radius: 5px;
-            font-size: 1rem;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .username:hover .uid {
-            opacity: 1;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .badges-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 5px;
-            margin-bottom: 5px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            border-radius: 5px;
-            transition: transform 0.3s ease;
-        }
-
-        .badge-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .badge-name {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 5px;
-            border-radius: 5px;
-            font-size: 1rem;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
-        .badge:hover .badge-name {
-            opacity: 1;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .badge:hover {
-            transform: translateY(-5px);
-        }
-
-        .profile-description {
-            margin-top: 10px;
-            font-size: 1.2rem;
-        }
-
-        #typing-text::after {
-            content: '|';
-            animation: blink 1s infinite;
-            margin-left: 2px;
-        }
-
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        .line {
-            width: 80%;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
-            margin: 20px auto;
-        }
-
-        .vertical-line {
-            width: 1px;
-            height: 30px;
-            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 10px;
-        }
-
-        .social-icons .icon {
-            width: 40px;
-            height: 40px;
-            background-color: transparent;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .social-icons .icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .social-icons .icon:hover img {
-            transform: scale(1.1);
-        }
-
-        .social-icons .icon:hover {
-            transform: translateY(-5px);
-        }
-
-        .social-icons .icon .social-name {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 5px;
-            border-radius: 5px;
-            font-size: 1rem;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
-        .social-icons .icon:hover .social-name {
-            opacity: 1;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .volume-controller {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 0;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            transition: opacity 0.3s ease;
-        }
-
-        .volume-button {
-            width: 50px;
-            height: 50px;
-            background: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .volume-button img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-        }
-
-        .volume-slider {
-            -webkit-appearance: none;
-            width: 0;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.3);
-            outline: none;
-            border-radius: 4px;
-            transition: width 0.3s ease, opacity 0.3s ease;
-            opacity: 0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .volume-controller:hover .volume-slider {
-            width: 150px;
-            opacity: 1;
-        }
-
-        .volume-slider:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            background: white;
-            border-radius: 50%;
-            cursor: url('Cursor.gif'), auto;
-            transition: transform 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .volume-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            background: #e0e0e0;
-        }
-
-        .shop-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 7;
-        }
-
-        .shop-button:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .shop-button img {
-            width: 30px;
-            height: 30px;
-        }
-
-        .profile-views {
-            position: absolute;
-            bottom: 20px;
-            left: 15px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: white;
-            font-size: 14px;
-            z-index: 7;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 3px 8px;
-            border-radius: 15px;
-        }
-
-        .profile-img {
-            width: 24px;
-            height: 24px;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-views:hover .profile-img {
-            transform: translateY(-5px);
-        }
-
-        .view-count {
-            font-family: Roboto, Arial, sans-serif;
-            font-weight: 400;
-        }
-
-        .view-tooltip {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 5px;
-            border-radius: 5px;
-            font-size: 1rem;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
-        .profile-views:hover .view-tooltip {
-            opacity: 1;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .playlist-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .player-controls {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        #current-song {
-            font-size: 14px;
-            font-family: Roboto, Arial, sans-serif;
-        }
-
-        .progress-slider {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.3);
-            outline: none;
-            border-radius: 2px;
-        }
-
-        .progress-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
-            background: white;
-            border-radius: 50%;
-            cursor: url('Cursor.gif'), auto;
-        }
-
-        .control-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .control-button {
-            background: none;
-            border: none;
-            cursor: url('Cursor.gif'), auto;
-        }
-
-        .control-button img {
-            width: 24px;
-            height: 24px;
-            transition: transform 0.3s ease;
-        }
-
-        .control-button:hover img {
-            transform: translateY(-5px);
-        }
-
-        /* Mobile Anpassungen */
-        @media (max-width: 600px) {
-            .profile-wrapper {
-                max-width: 360px;
-                gap: 5px;
-                transform: perspective(1000px) rotateX(var(--xv)) rotateY(var(--yv)) scale(0.9);
-            }
-
-            .profile-container {
-                max-width: 360px;
-            }
-
-            .playlist-container {
-                max-width: 360px;
-            }
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="description" content="xpert.pw – Co-Founder of lost c2">
+    <meta name="keywords" content="lost c2, xpert">
+    <meta name="author" content="xpert">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="User: xpert">
+    <meta property="og:description" content="Co-Founder of lost c2">
+    <meta property="og:url" content="https://xpert.pw/">
+    <meta property="og:site_name" content="xpert.pw">
+    <meta property="og:image" content="https://i.ibb.co/b54ZcdBK/lll.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="profile image">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="User: xpert">
+    <meta name="twitter:description" content="Co-Founder of lost c2">
+    <meta name="twitter:image" content="https://i.ibb.co/b54ZcdBK/lll.webp">
+    <meta name="twitter:image:alt" content="Co-Founder of lost c2">
+    <meta name="twitter:site" content="@xpert">
+    <meta name="twitter:creator" content="@xpert">
+    <title>xpert.pw</title>
+    <link rel="icon" href="https://i.ibb.co/b54ZcdBK/lll.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
 </head>
-<body oncontextmenu="return false;" onkeydown="return disableDevTools(event);">
-    <video id="background-video" class="background-gif" autoplay muted loop playsinline>
-        <source src="background.mp4" type="video/mp4">
-    </video>
 
-    <audio id="audio-player"></audio>
+<body>
 
-    <div class="volume-controller" id="volume-controller">
-        <div class="volume-button" id="volume-button">
-            <img id="volume-icon" src="Volume_on.png" alt="Volume">
+    <body class="custom-cursor"></body>
+    <div class="particles" id="particles"></div>
+    <div class="main-content">
+        <div class="avatar-container" id="avatarContainer" onclick="profileClick()">
+            <img id="avatar" class="avatar" src="" alt="Avatar">
+            <img id="avatar-decoration" class="avatar-decoration" src="" alt="Decoration" style="display: none;">
+            <div class="status-circle" id="statusCircle"></div>
         </div>
-        <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume-slider">
-    </div>
-
-    <div class="overlay" id="overlay">
-        <span>[Hey! Click To Enter]</span>
-    </div>
-
-    <div class="content" id="content">
-        <div class="profile-wrapper" id="profile-wrapper">
-            <div class="profile-container" id="profile-container">
-                <div class="shop-button" id="shop-button">
-                    <img src="shop_icon.gif" alt="Shop">
-                </div>
-                <div class="avatar-container">
-                    <img src="liza.png" alt="Avatar" class="avatar">
-                </div>
-
-                <div class="username">
-                    X P E R T
-                    <div class="uid">UID: $$$</div>
-                </div>
-
-                <div class="badges-container">
-                    <div class="badge" title="Owner">
-                        <img src="Crown.gif" alt="" class="badge-img">
-                        <div class="badge-name">Founder of Lost C2</div>
-                    </div>
-                </div>
-
-                <p class="profile-description">
-                    <span id="typing-text"></span>
-                </p>
-
-                <div class="line"></div>
-
-                <div class="social-icons">
-                    <div class="icon">
-                        <img src="Angle_Wing_Right.png" alt="">
-                    </div>
-                    <div class="icon" onclick="window.open('https://discord.gg/lostnetwork');">
-                        <img src="discord.png" alt="">
-                        <div class="social-name">Discord Community</div>
-                    </div>
-                    <div class="icon">
-                        <img src="Angle_Wing_Left.png" alt="">
-                    </div>
-                </div>
-
-                <div class="profile-views" id="profile-views">
-                    <img src="eye_icon.png" alt="Profile Views" class="profile-img">
-                    <span class="view-count" id="view-count">999</span>
-                    <div class="view-tooltip">Profile Views</div>
-                </div>
-            </div>
-
-            <div class="playlist-container" id="playlist-container">
-                <img src="playlist_avatar.gif" alt="Playlist Avatar" class="playlist-avatar">
-                <div class="vertical-line"></div>
-                <div class="player-controls">
-                    <span id="current-song">Song 1</span>
-                    <input type="range" min="0" max="100" value="0" class="progress-slider" id="progress-slider">
-                    <div class="control-buttons">
-                        <button class="control-button" id="stop-play-button">
-                            <img src="stop_icon.png" alt="Stop" id="stop-play-icon">
-                        </button>
-                        <button class="control-button" id="next-button">
-                            <img src="next_icon.png" alt="Skip">
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <div class="username" id="username">
+            <div class="platform-icons" id="platformIcons"></div>
         </div>
+        <div class="user-handle" id="handle">xpert</div>
+        <div class="activity-status" id="activityStatus">Co-Founder of lost c2</div>
+        <div class="support-info">
+            <a href="https://lostservices.us">lostservices.us</a><br>
+            <a href="https://t.me/xpertthecat">Telegram</a><br>
+            <a href="https://t.me/udpppps">Telegram Backup</a><br>
+            <a href="https://t.me/LostNetworkOnTop">Lost Telegram</a><br>
+            Contact: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=xpert@xpert.pw" target="_blank">
+                <span class="__cf_email__">admin@xpert.pw
+                </span>
+            </a><br>
+        </div>
+        </a><br>
+        <div class="links-section">
+            <a href="https://t.me/xpertthecat" class="link-card" target="_blank">
+                <i class="fa-brands fa-telegram"></i>
+                <span class="link-text">Telegram</span>
+            </a>
+        
+            <a href="https://t.me/udpppps" class="link-card" target="_blank">
+                <i class="fa-brands fa-telegram"></i>
+                <span class="link-text">Telegram Backup</span>
+            </a>
+        
+            <a href="https://x.com/xpertTxpert" class="link-card" target="_blank">
+                <i class="fa-brands fa-x-twitter"></i>
+                <span class="link-text">Twitter</span>
+            </a>
+        
+            <a href="https://lostservices.us" class="link-card" target="_blank">
+                <i class="fa-solid fa-globe"></i>
+                <span class="link-text">Lost Services</span>
+            </a>
+        
+            <a href="https://t.me/LostNetworkOnTop" class="link-card" target="_blank">
+                <i class="fa-brands fa-telegram"></i>
+                <span class="link-text">Lost Telegram</span>
+            </a>
+        
+        </div>
+        
+        <div class="footer">Powered by xpert.pw • Co-Founder of lost c2</div>        
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            try {
-                document.addEventListener('selectstart', function(e) {
-                    e.preventDefault();
-                    return false;
-                });
-
-                document.addEventListener('contextmenu', function(e) {
-                    e.preventDefault();
-                    return false;
-                });
-
-                function disableDevTools(event) {
-                    if (
-                        event.keyCode === 123 ||
-                        (event.ctrlKey && event.shiftKey && event.keyCode === 73) ||
-                        (event.ctrlKey && event.shiftKey && event.keyCode === 74) ||
-                        (event.ctrlKey && event.keyCode === 85)
-                    ) {
-                        event.preventDefault();
-                        return false;
-                    }
-                }
-
-                document.addEventListener('keydown', disableDevTools);
-
-                const volumeController = document.getElementById('volume-controller');
-                const volumeButton = document.getElementById('volume-button');
-                const volumeIcon = document.getElementById('volume-icon');
-                const volumeSlider = document.getElementById('volume-slider');
-                const overlay = document.getElementById('overlay');
-                const content = document.getElementById('content');
-                const shopButton = document.getElementById('shop-button');
-                const profileWrapper = document.getElementById('profile-wrapper');
-                const audioPlayer = document.getElementById('audio-player');
-                const stopPlayButton = document.getElementById('stop-play-button');
-                const stopPlayIcon = document.getElementById('stop-play-icon');
-                const nextButton = document.getElementById('next-button');
-                const currentSongElement = document.getElementById('current-song');
-                const progressSlider = document.getElementById('progress-slider');
-                let isMuted = false;
-                let previousVolume = 50;
-
-                if (!volumeController || !volumeButton || !volumeIcon || !volumeSlider || !overlay || !content || !shopButton || !profileWrapper || !audioPlayer || !stopPlayButton || !stopPlayIcon || !nextButton || !currentSongElement || !progressSlider) {
-                    console.error('One or more elements not found');
-                    return;
-                }
-
-                audioPlayer.volume = 0.5;
-                volumeSlider.value = 50;
-
-                overlay.addEventListener('click', function() {
-                    this.classList.add('hidden');
-                    content.style.display = 'block';
-                    shopButton.style.display = 'flex';
-                    loadSong(currentSongIndex);
-                    audioPlayer.play().catch(error => console.log('Audio play failed:', error));
-                    stopPlayIcon.src = 'stop_icon.png';
-                });
-
-                volumeButton.addEventListener('click', function() {
-                    isMuted = !isMuted;
-                    if (isMuted) {
-                        previousVolume = volumeSlider.value;
-                        audioPlayer.volume = 0;
-                        volumeIcon.src = 'Volume_off.png';
-                        volumeSlider.value = 0;
-                    } else {
-                        audioPlayer.volume = previousVolume / 100;
-                        volumeIcon.src = 'Volume_on.png';
-                        volumeSlider.value = previousVolume;
-                    }
-                });
-
-                volumeSlider.addEventListener('input', function() {
-                    const volume = this.value / 100;
-                    audioPlayer.volume = volume;
-                    previousVolume = this.value;
-                    if (volume > 0) {
-                        isMuted = false;
-                        audioPlayer.muted = false;
-                        volumeIcon.src = 'Volume_on.png';
-                    } else {
-                        isMuted = true;
-                        volumeIcon.src = 'Volume_off.png';
-                    }
-                });
-
-                const phrases = ["lostservices.us"];
-                const typingTextElement = document.getElementById('typing-text');
-                let currentPhraseIndex = 0;
-                let currentCharIndex = 0;
-                let isDeleting = false;
-
-                function type() {
-                    const currentPhrase = phrases[currentPhraseIndex];
-                    const typingSpeed = 120;
-                    const deletingSpeed = 60;
-                    const pauseTime = 2000;
-
-                    if (!isDeleting && currentCharIndex <= currentPhrase.length) {
-                        typingTextElement.textContent = currentPhrase.slice(0, currentCharIndex);
-                        currentCharIndex++;
-                        setTimeout(type, typingSpeed);
-                    } else if (isDeleting && currentCharIndex > 0) {
-                        typingTextElement.textContent = currentPhrase.slice(0, currentCharIndex - 1);
-                        currentCharIndex--;
-                        setTimeout(type, deletingSpeed);
-                    } else if (!isDeleting && currentCharIndex > currentPhrase.length) {
-                        setTimeout(() => {
-                            isDeleting = true;
-                            type();
-                        }, pauseTime);
-                    } else if (isDeleting && currentCharIndex === 0) {
-                        isDeleting = false;
-                        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-                        setTimeout(type, 500);
-                    }
-                }
-
-                setTimeout(type, 500);
-
-                profileWrapper.addEventListener('mousemove', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const sensitivity = 42;
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const rotateX = ((y / rect.height) - 0.5) * sensitivity;
-                    const rotateY = ((x / rect.width) - 0.5) * -sensitivity;
-                    this.style.setProperty('--xv', `${rotateX}deg`);
-                    this.style.setProperty('--yv', `${rotateY}deg`);
-                });
-
-                profileWrapper.addEventListener('mouseleave', function() {
-                    setTimeout(() => {
-                        this.style.setProperty('--xv', `0deg`);
-                        this.style.setProperty('--yv', `0deg`);
-                    }, 150);
-                });
-
-                shopButton.addEventListener('click', function() {
-                    window.open('http://lostservices.us/');
-                });
-
-                const playlist = [
-                    { src: 'song1.mp3', title: 'Kendrick Lamar - gnx' },
-                    { src: 'song2.mp3', title: 'A Boogie Wit Da Hoodie - My Shit (Prod. By D Stackz)' },
-                    { src: 'song3.mp3', title: 'Polo G - Heartless (feat. Mustard)' }
-                ];
-                let currentSongIndex = 0;
-
-                function loadSong(index) {
-                    audioPlayer.src = playlist[index].src;
-                    currentSongElement.textContent = playlist[index].title;
-                    progressSlider.value = 0;
-                }
-
-                loadSong(currentSongIndex);
-
-                stopPlayButton.addEventListener('click', function() {
-                    if (audioPlayer.paused) {
-                        audioPlayer.play().catch(error => console.log('Audio play failed:', error));
-                        stopPlayIcon.src = 'stop_icon.png';
-                    } else {
-                        audioPlayer.pause();
-                        stopPlayIcon.src = 'play_icon.png';
-                    }
-                });
-
-                nextButton.addEventListener('click', function() {
-                    currentSongIndex = (currentSongIndex + 1) % playlist.length;
-                    loadSong(currentSongIndex);
-                    audioPlayer.play().catch(error => console.log('Audio play failed:', error));
-                    stopPlayIcon.src = 'stop_icon.png';
-                });
-
-                audioPlayer.addEventListener('timeupdate', function() {
-                    if (!isNaN(audioPlayer.duration)) {
-                        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-                        progressSlider.value = progress;
-                    }
-                });
-
-                progressSlider.addEventListener('input', function() {
-                    const time = (this.value / 100) * audioPlayer.duration;
-                    audioPlayer.currentTime = time;
-                });
-
-                audioPlayer.addEventListener('ended', function() {
-                    currentSongIndex = (currentSongIndex + 1) % playlist.length;
-                    loadSong(currentSongIndex);
-                    audioPlayer.play().catch(error => console.log('Audio play failed:', error));
-                    stopPlayIcon.src = 'stop_icon.png';
-                });
-
-                async function updateProfileViews() {
-                    try {
-                        const ipResponse = await fetch('https://api.ipify.org?format=json');
-                        const { ip } = await ipResponse.json();
-
-                        const response = await fetch('http://localhost:3000/increment-view', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({ ip: ip, profileId: 'xpert' })
-                        });
-
-                        const data = await response.json();
-                        const viewCountElement = document.getElementById('view-count');
-                        if (data.views) {
-                            viewCountElement.textContent = data.views.toLocaleString();
-                        }
-                    } catch (error) {
-                        console.error('Fehler beim Aktualisieren der Profilaufrufe:', error);
-                    }
-                }
-
-                updateProfileViews();
-            } catch (error) {
-                console.error('Script error:', error);
-            }
-        });
-    </script>
+    <div id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
 </body>
 </html>
